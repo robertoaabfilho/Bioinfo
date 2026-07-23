@@ -40,8 +40,8 @@ Ao final da disciplina, o aluno deverá ser capaz de:
 | 1 | Introdução ao ambiente computacional para bioinformática e mineração de texto biomédico | 4h |
 | 2 | Qualidade e processamento de dados de NGS; identificação e comparação de sequências biológicas | 4h |
 | 3 | Genômica: montagem e anotação de genomas | 2h |
-| 4 | Transcriptômica: RNA-seq e análise de expressão diferencial | 2h |
-| 5 | Proteômica: identificação e quantificação de proteínas por espectrometria de massas | 3h |
+| 4 | Transcriptômica: RNA-seq e análise de expressão diferencial | 3h |
+| 5 | Proteômica: identificação e quantificação de proteínas por espectrometria de massas | 2h |
 | 6 | Epigenômica: metilação do DNA, modificações de histonas e acessibilidade da cromatina | 3h |
 | 7 | Bioinformática estrutural: visualização, modelagem por homologia, docking e dinâmica molecular | 4h |
 | 8 | Análise filogenética e evolução molecular | 3h |
