@@ -1,7 +1,7 @@
 # Aula 2 — Qualidade e Processamento de Dados de NGS; Identificação e Comparação de Sequências Biológicas
 
 **Disciplina:** Introdução à Bioinformática — PPGED/IME
-**Carga horária da aula:** 4 horas (teoria + prática guiada)
+**Carga horária da aula:** 3 horas (teoria + prática guiada)
 **Público-alvo:** Pós-graduandos em Engenharia de Defesa, sem experiência prévia em programação ou biologia molecular aprofundada
 
 ---
@@ -16,9 +16,9 @@ Cada ferramenta desta aula resolve uma dessas quatro etapas.
 
 ---
 
-## Parte 1 — TEORIA (2h)
+## Parte 1 — TEORIA (1,5h)
 
-### 1.1 Por que isso importa para Engenharia de Defesa (15 min)
+### 1.1 Por que isso importa para Engenharia de Defesa 
 
 Antes de entrar nas ferramentas, contextualizamos o "porquê":
 
@@ -27,7 +27,7 @@ Antes de entrar nas ferramentas, contextualizamos o "porquê":
 - **Verificação de agentes biológicos:** distinguir uma cepa natural de uma manipulada, comparando sequências.
 - **Análise de proteínas de interesse:** para quem trabalha com química de proteínas e macromoléculas, entender a sequência é o primeiro passo antes de qualquer análise estrutural (que veremos na Unidade 7).
 
-### 1.2 O que é uma "read" e o formato FASTQ (25 min)
+### 1.2 O que é uma "read" e o formato FASTQ
 
 - Sequenciadores modernos (NGS — *Next Generation Sequencing*) não leem uma molécula de DNA inteira. Eles quebram o material genético em milhões de fragmentos pequenos e leem cada um separadamente. Cada fragmento lido é uma **read**.
 - O resultado é salvo em um arquivo de texto no formato **FASTQ**. Vamos abrir um arquivo real e explicar linha por linha:
@@ -81,7 +81,7 @@ Os `I` representam bases lidas com qualidade máxima (Q40, ótima confiança), e
 
 *Dica para a aula:* quando os alunos abrirem um arquivo FASTQ real no Galaxy, essa sequência de símbolos vai parecer estranha à primeira vista — reforçar que cada caractere ali é, na verdade, um número escondido representando a confiança do sequenciador naquela letra específica.
 
-### 1.3 Controle de qualidade: FastQC e MultiQC (30 min)
+### 1.3 Controle de qualidade: FastQC e MultiQC
 
 - **FastQC**
   O que é: um programa que faz um "raio-X" de um arquivo FASTQ inteiro e gera um relatório visual (HTML) com gráficos prontos: qualidade média por posição na read, conteúdo de GC, presença de adaptadores de sequenciamento, sequências duplicadas, entre outros.
@@ -92,7 +92,7 @@ Os `I` representam bases lidas com qualidade máxima (Q40, ótima confiança), e
   O que é: uma ferramenta que agrega os relatórios de várias amostras (por exemplo, 50 relatórios do FastQC) em um único painel comparativo.
   Por que importa: em estudos de vigilância epidemiológica ou biodefesa, é comum processar dezenas ou centenas de amostras ao mesmo tempo — o MultiQC evita que o analista tenha que abrir um relatório de cada vez.
 
-### 1.4 Limpeza dos dados: Trimmomatic e Cutadapt (25 min)
+### 1.4 Limpeza dos dados: Trimmomatic e Cutadapt
 
 - Depois do diagnóstico (FastQC), muitas vezes descobrimos que as pontas das reads têm qualidade baixa, ou que sobraram pedaços de "adaptadores" (sequências artificiais usadas no processo químico de sequenciamento, que não fazem parte do organismo).
 - **Trimmomatic** e **Cutadapt**
@@ -101,7 +101,7 @@ Os `I` representam bases lidas com qualidade máxima (Q40, ótima confiança), e
   Resultado: um novo arquivo FASTQ, mais "limpo", pronto para as etapas seguintes.
 - Prática recomendada: rodar o FastQC de novo *depois* da limpeza, para confirmar visualmente que a qualidade melhorou (comparação "antes x depois").
 
-### 1.5 Alinhamento contra um genoma de referência: BWA, Bowtie2 e SAMtools (30 min)
+### 1.5 Alinhamento contra um genoma de referência: BWA, Bowtie2 e SAMtools
 
 - Depois de limpos, os pedacinhos (reads) precisam ser "encaixados" de volta em um genoma de referência conhecido — como resolver um quebra-cabeça enorme, comparando cada peça com a imagem da caixa.
 - **BWA** (Burrows-Wheeler Aligner) e **Bowtie2**
@@ -110,7 +110,7 @@ Os `I` representam bases lidas com qualidade máxima (Q40, ótima confiança), e
 - **SAMtools**
   O que é: o "canivete suíço" para manipular os arquivos gerados pelo alinhamento (formatos **SAM** e **BAM** — basicamente uma tabela de "qual read caiu em qual posição do genoma"). Serve para ordenar, filtrar, indexar e converter esses arquivos, preparando-os para visualização ou análises posteriores.
 
-### 1.6 Mudando de escala: busca e comparação de sequências com BLAST, Clustal Omega e MUSCLE (15 min)
+### 1.6 Mudando de escala: busca e comparação de sequências com BLAST, Clustal Omega e MUSCLE
 
 - Até agora falamos de alinhar *milhões* de reads pequenas contra *um* genoma de referência específico. Agora mudamos de problema: e se eu tiver **uma única sequência** (um gene, uma proteína) e quiser saber **quais sequências parecidas já existem no mundo**?
 - **BLAST** (Basic Local Alignment Search Tool)
@@ -122,7 +122,7 @@ Os `I` representam bases lidas com qualidade máxima (Q40, ótima confiança), e
 
 ---
 
-## Parte 2 — PRÁTICA GUIADA (2h, síncrona) + Atividade assíncrona
+## Parte 2 — PRÁTICA GUIADA (1,5h, síncrona) + Atividade assíncrona
 
 ### Por que usar o Galaxy nesta turma
 
@@ -130,11 +130,11 @@ Como a turma não tem experiência prévia com linha de comando, toda a prática
 
 ### Roteiro passo a passo da prática síncrona (professor demonstra e alunos replicam)
 
-**Passo 0 — Preparação (10 min)**
+**Passo 0 — Preparação**
 1. Criar conta gratuita em https://usegalaxy.org (pode ser feito antes da aula).
 2. Abrir uma nova "History" (histórico de trabalho) com um nome identificável, ex: `Aula2_Turma_PPGED`.
 
-**Passo 1 — Obter um dataset público de exemplo (15 min)**
+**Passo 1 — Obter um dataset público de exemplo**
 1. Acessar o **SRA (Sequence Read Archive)**, o repositório mundial de dados brutos de sequenciamento, mantido pelo NCBI.
 2. O professor já disponibiliza previamente o identificador de uma amostra pequena e didática (ver quadro "Amostras recomendadas" abaixo), para não gastar tempo de aula com downloads grandes.
 3. Importar esse dataset diretamente para o Galaxy usando a ferramenta **"Faster Download and Extract Reads in FASTQ" (fastq-dump)** (link na tabela de materiais). Basta colar o *accession* desejado (ex.: `SRR957824` ou `SRR453566`) no campo de entrada da ferramenta e executar — o Galaxy baixa e converte os dados automaticamente para o formato FASTQ.
@@ -155,7 +155,7 @@ Os dados do SRA são sempre **brutos**, exatamente como saíram do sequenciador 
 
 *Observação:* como os arquivos completos podem ter alguns milhões de reads, o professor prepara previamente uma versão reduzida (subconjunto de algumas dezenas de milhares de reads) de cada amostra, para caber confortavelmente no tempo da aula síncrona.
 
-**Passo 2 — Rodar o FastQC (15 min)**
+**Passo 2 — Rodar o FastQC**
 1. No menu de ferramentas do Galaxy, buscar por "FastQC".
 2. Selecionar o arquivo FASTQ importado e executar.
 3. Abrir o relatório HTML gerado e interpretar juntos, em turma:
@@ -163,16 +163,16 @@ Os dados do SRA são sempre **brutos**, exatamente como saíram do sequenciador 
    - Há sinal de adaptadores?
    - O conteúdo de GC está dentro do esperado para o organismo?
 
-**Passo 3 — Limpeza com Trimmomatic (15 min)**
+**Passo 3 — Limpeza com Trimmomatic**
 1. Buscar a ferramenta "Trimmomatic" no Galaxy.
 2. Configurar parâmetros básicos (corte por qualidade mínima, remoção de adaptadores) — o professor explica cada parâmetro em linguagem simples, sem jargão excessivo.
 3. Rodar sobre o dataset original.
 
-**Passo 4 — Comparar antes x depois (10 min)**
+**Passo 4 — Comparar antes x depois**
 1. Rodar o FastQC novamente sobre o arquivo já limpo pelo Trimmomatic.
 2. Colocar os dois relatórios lado a lado e discutir as diferenças visuais.
 
-**Passo 5 — Alinhamento com Bowtie2 (20 min)**
+**Passo 5 — Alinhamento com Bowtie2**
 1. Buscar a ferramenta "Bowtie2" no Galaxy (ver observação sobre BWA x Bowtie2 abaixo).
 2. Selecionar o genoma de referência correspondente à amostra usada (ver quadro "Genomas de referência" abaixo).
 3. Rodar o alinhamento das reads limpas contra essa referência.
@@ -200,16 +200,16 @@ Não existe um "vencedor" absoluto entre as duas ferramentas — a escolha depen
 
 Optamos pelo **Bowtie2** nesta aula porque: (1) nosso dataset é Illumina de reads curtas, cenário em que o Bowtie2 é considerado referência; (2) ele antecipa uma ferramenta-irmã (HISAT2) que os alunos vão rever na Unidade 4; (3) tende a exigir menos parâmetros técnicos no primeiro contato. Vale mencionar aos alunos, como nota conceitual, que na prática de mercado os dois são frequentemente usados de forma intercambiável para esse tipo de dado — a escolha muitas vezes reflete apenas o pipeline já estabelecido no laboratório.
 
-**Passo 6 — Manipulação com SAMtools (10 min)**
+**Passo 6 — Manipulação com SAMtools**
 1. Usar a ferramenta "Samtools flagstat" no Galaxy para gerar um resumo estatístico simples do alinhamento (quantas reads alinharam, quantas não alinharam).
 2. Interpretar juntos o resultado.
 
-**Passo 7 — Busca no BLAST (15 min)**
+**Passo 7 — Busca no BLAST**
 1. Acessar diretamente o site do NCBI BLAST (https://blast.ncbi.nlm.nih.gov).
 2. Colar uma sequência de proteína ou gene de interesse (o professor sugere uma sequência ligada a alguma linha de pesquisa da turma, ex.: uma proteína usada em química de macromoléculas).
 3. Rodar `blastp` e interpretar a tabela de resultados: percentual de identidade, valor de *E-value* (quanto menor, mais significativa a similaridade encontrada), organismo de origem do "parente" encontrado.
 
-**Passo 8 — Alinhamento múltiplo com Clustal Omega (10 min)**
+**Passo 8 — Alinhamento múltiplo com Clustal Omega**
 1. Pegar 3-4 sequências homólogas (parecidas) encontradas no passo anterior via BLAST.
 2. Colar no Clustal Omega online (https://www.ebi.ac.uk/jdispatcher/msa/clustalo).
 3. Observar visualmente as regiões conservadas (coloridas de forma idêntica entre as sequências) e as regiões variáveis.
