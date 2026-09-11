@@ -2,7 +2,7 @@
 
 **Disciplina:** Introdução à Bioinformática — PPGED/IME
 **Carga horária da aula:** 3 horas (teoria + prática guiada)
-**Público-alvo:** Pós-graduandos em Engenharia de Defesa, sem experiência prévia em programação ou biologia molecular aprofundada
+**Público-alvo:** Pós-graduandos em Engenharia de Defesa
 **Pré-requisito direto:** Aula 2 (qualidade de NGS, alinhamento, BLAST) — todos os conceitos de "reads" e ferramentas do Galaxy já foram apresentados
 
 ---
